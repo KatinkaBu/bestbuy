@@ -24,7 +24,6 @@ class Product:
         if quantity < 0:
             raise ValueError("Quantity cannot be negative.")
 
-        #muss ich das nochmal schreiben?
         self.quantity = quantity
 
         # Deactivate the product if quantity is 0
