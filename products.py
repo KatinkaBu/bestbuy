@@ -1,13 +1,14 @@
 class Product:
     def __init__(self, name, price, quantity):
-        #gpt
+        """
+        Initiator (constructor) method. Creates the instance variables (active is set to True).
+        If something is invalid (empty name / negative price or quantity), raises an exception.
+        """
         if not name or price < 0 or quantity < 0:
             raise ValueError("Invalid input: name must not be empty, price and quantity must be non-negative.")
-
         self.name = name
         self.price = price
         self.quantity = quantity
-        #gpt
         self.active = True
 
     def get_quantity(self):
@@ -20,15 +21,12 @@ class Product:
         """
         Setter function for quantity. If quantity reaches 0, deactivates the product.
         """
-        #gpt
         if quantity < 0:
             raise ValueError("Quantity cannot be negative.")
-
         self.quantity = quantity
 
-        # Deactivate the product if quantity is 0
         if self.quantity == 0:
-            self.active = False
+            self.deactivate()
 
 
     def is_active(self):
@@ -61,12 +59,11 @@ class Product:
 
     def buy(self, quantity):
         """
-        Buys a given quantity of the product.
+        Buys a given quantity of the product:
         Returns the total price (float) of the purchase.
         Updates the quantity of the product.
-        In case of a problem (when? think about it), raises an Exception.
+        In case of a problem raises an Exception.
         """
-        #gpt
         if not self.active:
             raise Exception("Cannot purchase an inactive product.")
 
